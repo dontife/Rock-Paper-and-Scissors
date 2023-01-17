@@ -6,7 +6,8 @@ let emojis = ["✂️ ", "📄", "🪨"];
 let emojiShuffleElement = document.querySelector("#emoji-shuffle");
 let playerChoiceContainer = document.querySelector("#player-choice-container"); 
 playerChoiceContainer.addEventListener("click", handlePlayerChoice);
-shuffleEmojis();
+let currentEmojiNumber = 0;
+let shuffleIntervalID = setInterval(shuffleEmojis, 150);
 
 function handlePlayerChoice(event) {
     if (!event.target.classList.contains("emoji")) return;
@@ -16,5 +17,12 @@ function handlePlayerChoice(event) {
 function shuffleEmojis() {
     computerChoice = emojis[1];
     emojiShuffleElement.textContent = computerChoice;
+
+    if (currentEmojiNumber < emojis.length - 1) {
+        currentEmojiNumber++;
+    } else {
+        currentEmojiNumber = 0;
+    }
+
 
 }
